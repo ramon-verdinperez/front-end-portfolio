@@ -1,28 +1,25 @@
 .questionOuter {
     width: 100%;
-    min-height: 60px;
-    display: grid;
-    grid-template-rows: 75px 0px;
-    align-items: center;
     overflow: hidden;
-}
-
-.open {
-    height: auto;
-    grid-template-rows: 75px 0.5fr;
-}
-
-.closed {
-    height: 75px;
 }
 
 .title {
     display: flex;
     align-items: center;
     width: 100%;
+    height: 60px;
 }
 
-.question {
+.title h4 {
+    margin: 0;
+    font-weight: 600;
+}
+
+.title:hover h4 {
+    color: hsl(292, 75%, 49%);
+}
+
+.question { 
     display: flex;
     justify-content: flex-start;
     width: 90%;
@@ -35,5 +32,22 @@
 }
 
 .description {
-    align-self:self-start;
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: all 0.5s;
+}
+
+.description > div {
+    overflow: hidden;
+}
+
+.description p {
+    font-weight: 400;
+    margin: 0;
+    color: hsl(292, 16%, 49%);
+}
+
+.open {
+    grid-template-rows: 1fr;
+    padding-bottom: 20px;
 }

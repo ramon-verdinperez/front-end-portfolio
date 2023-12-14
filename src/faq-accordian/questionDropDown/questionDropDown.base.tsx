@@ -1,31 +1,31 @@
 import iconPlus from '../assets/images/icon-plus.svg';
 import iconMinus from '../assets/images/icon-minus.svg';
 import './questionDropDown.styles.css'
-import { useState } from 'react';
 
 export interface QuestionDropDownProps {
     question: string;
     description: string;
+    isSelected: boolean;
 }
 
 export const QuestionDropDown = (props: QuestionDropDownProps) => {
 
-    const {question, description} = props;
-    const [isSelected, setIsSselected] = useState(false);
-
+    const {question, description, isSelected} = props;
 
     return (
-    <div className={`questionOuter ${isSelected ? 'open' : 'closed'}`} onClick={() => setIsSselected(!isSelected)}>
+    <div className='questionOuter' >
         <div className="title">
             <div className='question'>
-                {question}
+                <h4>{question}</h4>
             </div>
             <div className='icon'>
                 <img src={isSelected ? iconMinus : iconPlus} alt="Icon" />
             </div>
         </div>
-        <div className="description">
-            {description}
+        <div className={`description ${isSelected ? 'open' : ''}`}>
+            <div>
+                <p>{description}</p>
+            </div>
         </div>
     </div>
     )
