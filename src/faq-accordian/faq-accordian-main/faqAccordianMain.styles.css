@@ -1,0 +1,36 @@
+* {
+    /* font-family: 'Work Sans'; */
+}
+
+.accordianOuter {
+    width: 100%;
+    height: 100vh;
+    background-image: url('../assets/images/background-pattern-desktop.svg');
+    background-repeat:repeat-x;
+    background-color: hsl(275, 100%, 97%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.accordianPanelOuter {
+    background-color: white;
+    width: 500px;
+    height: auto;
+    padding: 30px;
+    border-radius: 15px;
+}
+
+.title {
+    display: flex;
+    gap: 10px;
+}
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    padding: 0;
+    margin: 0;
+}
