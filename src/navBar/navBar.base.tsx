@@ -13,6 +13,10 @@ const NavBar = () => {
       text: "FAQ",
       link: "/faqAccordion",
     },
+    {
+      text: "Result Summary",
+      link: "/resultSummary"
+    }
   ];
 
   return (
