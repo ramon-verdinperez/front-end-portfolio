@@ -1,0 +1,54 @@
+.outer {
+  display: grid;
+  grid-template-rows: 0.5fr 6fr 1fr;
+  height: 350px;
+  width: 230px;
+  padding: 20px;
+}
+
+.title h3 {
+  margin: 0;
+}
+
+.scores {
+  height: auto;
+  width: 100%;
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  gap: 10px;
+  padding: 25px 0px;
+}
+
+.scoreSummary {
+  border-radius: 10px;
+  display: grid;
+  align-items: center;
+  grid-template-columns: 1fr 6fr 4fr;
+  padding: 10px;
+  gap: 10px;
+}
+
+.scoreSummary p, h4 {
+    margin: 0;
+    font-weight: 500;
+}
+
+.button {
+  background-color: hsl(224, 30%, 27%);
+  height: 100%;
+  width: 100%;
+  border-radius: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button:hover {
+  background-image: linear-gradient(hsl(252, 100%, 67%), hsl(241, 81%, 54%));
+}
+
+.button p {
+  margin: 0;
+  color: hsl(0, 0%, 100%);
+  font-weight: 500;
+}
