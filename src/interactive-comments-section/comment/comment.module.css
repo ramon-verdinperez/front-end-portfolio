@@ -1,0 +1,120 @@
+.outer {
+    background-color: hsl(0, 0%, 100%);
+    border-radius: 10px;
+    width: 100%;
+    max-width: 700px;
+    height: auto;
+    padding: 15px;
+    display: grid;
+    grid-template-columns: 1fr 10fr;
+    gap: 20px;
+}
+
+.likeCountOuter {
+    display: flex;
+    justify-content: center;
+}
+
+.likeCounter {
+    display: grid;
+    justify-content: center;
+    grid-template-rows: 1fr 2fr 1fr;
+    height: 90px;
+    padding: 10px 5px; 
+    min-width: 30px;
+    background-color: aliceblue;
+    border-radius: 10px;
+}
+
+.likeCounterItem {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: hsl(238, 40%, 52%);
+}
+
+.likeCounterItem p {
+    color: hsl(238, 40%, 52%);
+    font-weight: 600;
+}
+
+
+.mainContentOuter {
+    display: grid;
+    grid-template-rows: 40px 1fr;
+    gap: 10px;
+}
+
+.commentHeader {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    width: 100%;
+}
+
+.commentHeader h4 {
+    font-size: 18px;
+    padding: 0px;
+    margin: 0;
+}
+
+.commentHeader p {
+    font-size: 16px;
+    padding: 0;
+    margin: 0;
+    color: grey;
+}
+
+.avatar {
+    max-height: 40px;
+}
+
+.replyButton {
+    display: flex;
+    flex: 1;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 5px;
+    color: hsl(238, 40%, 52%);
+}
+
+.replyButton p {
+    color: hsl(238, 40%, 52%);
+    font-weight: 600;
+}
+
+.commentContent p {
+    color: grey;
+    padding: 0;
+    margin: 0;
+}
+
+/* .replySection {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 5px;
+    padding: 10px 0px;
+} */
+
+.replySection {
+    display: grid;
+    grid-template-columns: 1fr 8fr;
+    align-items: flex-end;
+    justify-items: center;
+    padding: 10px 0px;
+}
+
+.verticalLine {
+    height: 100%;
+    background-color: hsl(223, 19%, 93%);
+    width: 2px;
+}
+
+.reply {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 5px;
+}
