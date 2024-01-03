@@ -30,7 +30,7 @@ export const Comment = (props: CommentProps) => {
         <div className={style.mainContentOuter}>
           <div className={style.commentHeader}>
             <img
-              src={comment.user.image.webp}
+              src={comment.user.image.png}
               alt="Avatar"
               className={style.avatar}
             />
