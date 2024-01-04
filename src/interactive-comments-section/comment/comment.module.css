@@ -1,111 +1,147 @@
-.outer {
-    background-color: hsl(0, 0%, 100%);
-    border-radius: 10px;
-    width: 100%;
-    max-width: 700px;
-    height: auto;
-    padding: 15px;
-    display: grid;
-    grid-template-columns: 1fr 10fr;
-    gap: 20px;
+.button {
+  cursor: pointer;
+}
+
+
+.commentBase {
+  background-color: hsl(0, 0%, 100%);
+  border-radius: 10px;
+  width: inherit;
+  height: auto;
+  padding: 15px;
+}
+
+.regularComment {
+  display: grid;
+  grid-template-columns: 1fr 10fr;
+  gap: 20px;
 }
 
 .likeCountOuter {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 .likeCounter {
-    display: grid;
-    justify-content: center;
-    grid-template-rows: 1fr 2fr 1fr;
-    height: 90px;
-    padding: 10px 5px; 
-    min-width: 30px;
-    background-color: aliceblue;
-    border-radius: 10px;
+  display: grid;
+  justify-content: center;
+  grid-template-rows: 1fr 2fr 1fr;
+  height: 90px;
+  padding: 10px 5px;
+  min-width: 30px;
+  background-color: aliceblue;
+  border-radius: 10px;
 }
 
 .likeCounterItem {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: hsl(238, 40%, 52%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: hsl(238, 40%, 52%);
 }
 
 .likeCounterItem p {
-    color: hsl(238, 40%, 52%);
-    font-weight: 600;
+  color: hsl(238, 40%, 52%);
+  font-weight: 600;
 }
 
-
 .mainContentOuter {
-    display: grid;
-    grid-template-rows: 40px 1fr;
-    gap: 10px;
+  display: grid;
+  grid-template-rows: 40px 1fr;
+  gap: 10px;
 }
 
 .commentHeader {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  width: 100%;
 }
 
 .commentHeader h4 {
-    font-size: 18px;
-    padding: 0px;
-    margin: 0;
+  font-size: 18px;
+  padding: 0px;
+  margin: 0;
 }
 
 .commentHeader p {
-    font-size: 16px;
-    padding: 0;
-    margin: 0;
-    color: grey;
+  font-size: 16px;
+  padding: 0;
+  margin: 0;
+  color: grey;
 }
 
 .avatar {
-    max-height: 40px;
+  max-height: 40px;
 }
 
 .replyButton {
-    display: flex;
-    flex: 1;
-    justify-content: flex-end;
-    align-items: center;
-    gap: 5px;
-    color: hsl(238, 40%, 52%);
+  display: flex;
+  flex: 1;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 5px;
+  color: hsl(238, 40%, 52%);
 }
 
 .replyButton p {
-    color: hsl(238, 40%, 52%);
-    font-weight: 600;
+  color: hsl(238, 40%, 52%);
+  font-weight: 600;
 }
 
 .commentContent p {
-    color: grey;
-    padding: 0;
-    margin: 0;
+  color: grey;
+  padding: 0;
+  margin: 0;
 }
 
 .replySection {
-    display: grid;
-    grid-template-columns: 1fr 8fr;
-    align-items: flex-end;
-    justify-items: center;
-    padding: 10px 0px;
+  display: grid;
+  grid-template-columns: 1fr 8fr;
+  align-items: flex-end;
+  justify-items: center;
+  padding: 10px 0px;
 }
 
 .verticalLine {
-    height: 100%;
-    background-color: hsl(223, 19%, 93%);
-    width: 2px;
+  height: 100%;
+  background-color: hsl(223, 19%, 93%);
+  width: 2px;
 }
 
 .reply {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    gap: 5px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 5px;
+}
+
+.newComment {
+  display: grid;
+  grid-template-columns: 1fr 10fr 1fr;
+  gap: 15px;
+}
+
+.newCommentInput {
+    border-radius: 5px;
+    border: thin solid black;
+    padding: 10px 20px;
+}
+
+.newCommentReply {
+    width: 90px;
+    height: 40px;
+    border: none;
+    border-radius: 5px;
+    background-color: hsl(238, 40%, 52%);
+    color: white;
+    cursor: pointer;
+}   
+
+.newCommentReply:hover {
+    background-color: hsl(239, 57%, 85%);
+}
+
+.newCommentReply p {
+    font-weight: 600;
 }
