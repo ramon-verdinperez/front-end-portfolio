@@ -11,7 +11,7 @@ export const SocialFeedMain = () => {
     <div className={style.outer}>
       <div className={style.socialFeed}>
         {comments.map((c: CommentType) => (
-          <Comment comment={c} currentUser={currentUser}/>
+          <Comment key={c.id} comment={c} currentUser={currentUser}/>
         ))}
       </div>
     </div>

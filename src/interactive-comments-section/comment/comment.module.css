@@ -2,6 +2,16 @@
   cursor: pointer;
 }
 
+.commentAndNewReply {
+  display: grid;
+  grid-template-rows: 1fr 0fr;
+  gap: 5px;
+  transition: grid-template-rows 0.3s;
+}
+
+.commentAndNewReplyShow {
+  grid-template-rows: 1fr 1fr;
+}
 
 .commentBase {
   background-color: hsl(0, 0%, 100%);
@@ -11,12 +21,14 @@
   padding: 15px;
 }
 
+/* Regular Comment Styling */
 .regularComment {
   display: grid;
   grid-template-columns: 1fr 10fr;
   gap: 20px;
 }
 
+/* Displays likes and controls */
 .likeCountOuter {
   display: flex;
   justify-content: center;
@@ -45,12 +57,15 @@
   font-weight: 600;
 }
 
+/* The Right side of the comment (header + main content) */
+
 .mainContentOuter {
   display: grid;
   grid-template-rows: 40px 1fr;
   gap: 10px;
 }
 
+/* Header (avatar, username, created date, reply button) */
 .commentHeader {
   display: flex;
   align-items: center;
@@ -89,12 +104,14 @@
   font-weight: 600;
 }
 
+/* Main comment content */
 .commentContent p {
   color: grey;
   padding: 0;
   margin: 0;
 }
 
+/* Contains the replies */
 .replySection {
   display: grid;
   grid-template-columns: 1fr 8fr;
@@ -109,14 +126,18 @@
   width: 2px;
 }
 
-.reply {
+/* The actual replies  */
+.repliesContainer {
   display: flex;
   flex-direction: column;
   width: 100%;
   gap: 5px;
 }
 
+/* Leaving a new reply */
 .newComment {
+  height: 100%;
+  box-sizing: border-box;
   display: grid;
   grid-template-columns: 1fr 10fr 1fr;
   gap: 15px;
