@@ -83,7 +83,6 @@
   font-size: 16px;
   padding: 0;
   margin: 0;
-  color: grey;
 }
 
 .avatar {
@@ -144,12 +143,16 @@
 }
 
 .newCommentInput {
+  box-sizing: border-box;
     border-radius: 5px;
     border: thin solid black;
     padding: 10px 20px;
+    resize: none;
+    height: 100%;
+    width: 100%
 }
 
-.newCommentReply {
+.interactiveButton {
     width: 90px;
     height: 40px;
     border: none;
@@ -159,10 +162,47 @@
     cursor: pointer;
 }   
 
-.newCommentReply:hover {
+.interactiveButton:hover {
     background-color: hsl(239, 57%, 85%);
 }
 
-.newCommentReply p {
+.interactiveButton p {
     font-weight: 600;
+}
+
+.commentEdit {
+  display: grid;
+  grid-template-columns: 1fr 10fr;
+  gap: 20px;
+}
+
+.updateCommentContent {
+  display: grid;
+  grid-template-rows: 2fr 1fr;
+  height: 100%;
+  gap: 10px
+}
+
+.deleteAndEditContainer {
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+.iconAndWordContainer {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.purpleWord {
+  margin: 0;
+  color:hsl(238, 40%, 52%)
+}
+
+.redWord {
+  margin: 0;
+  color: red
 }
