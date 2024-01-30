@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import { Text } from '@fluentui/react';
+import { Text } from "@fluentui/react";
 import "./navBar.css";
 
 interface LinkType {
@@ -7,16 +7,19 @@ interface LinkType {
   link: string;
 }
 const NavBar = () => {
-
   const links: Array<LinkType> = [
+    {
+      text: "Home",
+      link: "/",
+    },
     {
       text: "FAQ",
       link: "/faqAccordion",
     },
     {
       text: "Result Summary",
-      link: "/resultSummary"
-    }
+      link: "/resultSummary",
+    },
   ];
 
   return (
@@ -35,7 +38,6 @@ const NavBar = () => {
             </NavLink>
           );
         })}
-        
       </div>
     </div>
   );
