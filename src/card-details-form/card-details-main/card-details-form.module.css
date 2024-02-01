@@ -1,0 +1,79 @@
+.outer {
+    width: 100%;
+    height: 900px;
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+}
+
+.leftImage {
+    width: 483px;
+    height: 900px;
+    background-image:url('../assets/bg-main-desktop.png');
+    background-repeat: no-repeat;
+}
+
+.formContentOuter {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cardsContainer {
+    top: 320px;
+    left: 175px;
+    width: 400px;
+    height: 400px;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.frontCard {
+    height: 175px;
+    background-size: contain;
+    background-image: url('../assets/bg-card-front.png');
+    background-repeat: no-repeat;
+}
+
+.backCard {
+    height: 175px;
+    background-size: contain;
+    background-image: url('../assets/bg-card-back.png');
+    background-repeat: no-repeat;
+    margin-left: 50px;
+}
+
+.cardForm {
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.genericInput {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    width: fit-content;
+}
+
+.dateAndCVC {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px
+}
+
+.dateAndCVC input {
+    width: 100%;
+}
+
+form > div input {
+    height: 30px;
+    border: black solid 1px;
+    border-radius: 8px;
+}
