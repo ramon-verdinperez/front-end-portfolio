@@ -73,10 +73,11 @@ label {
 }
 
 form > div input {
-    height: 30px;
+    height: 40px;
     border: black solid 1px;
     border-radius: 8px;
     padding-left: 10px;
+    box-sizing: border-box;
 }
 
 form h4 {
