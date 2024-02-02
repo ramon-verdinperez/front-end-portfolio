@@ -76,4 +76,25 @@ form > div input {
     height: 30px;
     border: black solid 1px;
     border-radius: 8px;
+    padding-left: 10px;
+}
+
+form h4 {
+    font-size: small;
+    padding-bottom: 5px;
+}
+
+.confirmButton {
+    background-color: hsl(278, 68%, 11%);
+    color: hsl(270, 3%, 87%);
+    height: 40px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+}
+
+.confirmButton h4 {
+    margin: 0;
 }
