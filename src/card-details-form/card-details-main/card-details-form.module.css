@@ -85,6 +85,29 @@ form h4 {
     padding-bottom: 5px;
 }
 
+@keyframes errorShake {
+    0% { transform: translateX(0) }
+    25% { transform: translateX(5px) }
+    50% { transform: translateX(-5px) }
+    75% { transform: translateX(5px) }
+    100% { transform: translateX(0) }
+}
+
+.errorMessage {
+    margin: 0px;
+    color: red;
+    font-size: small;
+    font-weight: 400;
+}
+
+.inputError {
+    border-color: red;
+    animation: errorShake 0.2s;
+}
+.inputError:focus-visible {
+    border-color: red;
+}
+
 .confirmButton {
     background-color: hsl(278, 68%, 11%);
     color: hsl(270, 3%, 87%);

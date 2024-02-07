@@ -1,14 +1,5 @@
-import { useState } from "react";
 import styles from "./card-details-form.module.css";
 import { useForm } from "react-hook-form";
-
-interface CardDetails {
-  name: string;
-  cardNumber: string;
-  expMonth: number | undefined;
-  expYear: number | undefined;
-  cvc: number | undefined;
-}
 
 export const CardDetailsForm = () => {
   const {
@@ -47,8 +38,13 @@ export const CardDetailsForm = () => {
               {...register("name", {
                 required: "Please enter the card holder name!",
               })}
+              className={errors.name?.message ? styles.inputError : undefined}
             />
-            {errors.name?.message}
+            {errors.name?.message && (
+              <div>
+                <p className={styles.errorMessage}>{errors.name?.message}</p>
+              </div>
+            )}
           </div>
 
           <div className={styles.genericInput}>
@@ -64,8 +60,15 @@ export const CardDetailsForm = () => {
                 },
               })}
               maxLength={16}
+              className={errors.cardNumber?.message ? styles.inputError : undefined}
             />
-            {errors.cardNumber?.message}
+            {errors.cardNumber?.message && (
+              <div>
+                <p className={styles.errorMessage}>
+                  {errors.cardNumber?.message}
+                </p>
+              </div>
+            )}
           </div>
 
           <div className={styles.dateAndCVC}>
@@ -85,6 +88,7 @@ export const CardDetailsForm = () => {
                     },
                   })}
                   maxLength={2}
+                  className={errors.expMonth?.message ? styles.inputError : undefined}
                 />
                 <input
                   type="text"
@@ -97,10 +101,19 @@ export const CardDetailsForm = () => {
                     },
                   })}
                   maxLength={2}
+                  className={errors.expYear?.message ? styles.inputError : undefined}
                 />
               </div>
-              {errors.expMonth?.message}
-              {errors.expYear?.message}
+              {(errors.expMonth?.message || errors.expYear?.message) && (
+                <div>
+                  <p className={styles.errorMessage}>
+                    {errors.expMonth?.message}
+                  </p>
+                  <p className={styles.errorMessage}>
+                    {errors.expYear?.message}
+                  </p>
+                </div>
+              )}
             </div>
 
             <div style={{ display: "flex", flexDirection: "column" }}>
@@ -116,8 +129,14 @@ export const CardDetailsForm = () => {
                   },
                 })}
                 maxLength={3}
+
+                className={errors.cvc?.message ? styles.inputError : undefined}
               />
-              {errors.cvc?.message}
+              {errors.cvc?.message && (
+                <div>
+                  <p className={styles.errorMessage}>{errors.cvc?.message}</p>
+                </div>
+              )}
             </div>
           </div>
           <input
