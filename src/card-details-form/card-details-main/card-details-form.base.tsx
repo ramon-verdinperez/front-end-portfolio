@@ -9,6 +9,7 @@ export const CardDetailsForm = () => {
     handleSubmit,
     watch,
     reset,
+    clearErrors,
     formState: { errors },
   } = useForm({
     defaultValues: {
@@ -59,7 +60,7 @@ export const CardDetailsForm = () => {
       <>
         <form
           className={styles.cardForm}
-          onSubmit={handleSubmit(() => setSubmitSuccess(true))}
+          onSubmit={handleSubmit(() => setSubmitSuccess(true) )}
         >
           <div className={styles.genericInput}>
             <h4>CARDHOLDER NAME</h4>
@@ -179,6 +180,7 @@ export const CardDetailsForm = () => {
             type="submit"
             className={styles.confirmButton}
             value="Confirm"
+            onClick={() =>  clearErrors()}
           />
         </form>
       </>
