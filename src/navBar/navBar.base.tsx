@@ -20,6 +20,10 @@ const NavBar = () => {
       text: "Result Summary",
       link: "/resultSummary",
     },
+    {
+      text: "Card Details",
+      link: "/cardDetails"
+    }
   ];
 
   return (
