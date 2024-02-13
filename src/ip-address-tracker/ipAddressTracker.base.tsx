@@ -1,13 +1,17 @@
 import { useForm } from "react-hook-form";
 import iconArrow from "./assets/icon-arrow.svg";
+import marker from "./assets/icon-location.svg";
 import styles from "./ipAddressTracker.module.css";
-import { useState } from "react";
-import { render } from "@testing-library/react";
+import { useEffect, useState } from "react";
+import { MapContainer, Marker, Popup, TileLayer, useMap } from "react-leaflet";
+import "leaflet/dist/leaflet.css";
+import { Icon } from "leaflet";
 
 export interface IPAddressInfo {
   ip: string;
   isp: string;
   location: {
+    region: string;
     city: string;
     country: string;
     lat: number;
@@ -31,6 +35,11 @@ export const IpAddressTracker = () => {
 
   const [ipInfo, setIpInfo] = useState<IPAddressInfo>();
 
+  const customIcon = new Icon({
+    iconUrl: marker,
+    iconAnchor: [23, 56],
+  });
+
   const ipLookup = async () => {
     await fetch(
       `https://geo.ipify.org/api/v2/country,city?apiKey=${
@@ -38,7 +47,22 @@ export const IpAddressTracker = () => {
       }&ipAddress=${getValues("ipAddress")}`
     )
       .then((r) => r.json())
-      .then((d) => setIpInfo(d));
+      .then((d: IPAddressInfo) => {
+        setIpInfo(d);
+      });
+  };
+
+  const RecenterAutomatically = () => {
+    const map = useMap();
+    useEffect(() => {
+      if (ipInfo) {
+        map.setView([ipInfo?.location.lat, ipInfo?.location.lng], 15, {
+          animate: true,
+        });
+      }
+    }, [ipInfo]);
+
+    return null;
   };
 
   const renderHeader = () => {
@@ -79,10 +103,64 @@ export const IpAddressTracker = () => {
     );
   };
 
+  const renderIpInfo = () => {
+    return (
+      <div className={styles.informationContainer}>
+        <div className={styles.informationSubContainer}>
+          <h4>IP ADDRESS</h4>
+          <h2>{ipInfo?.ip}</h2>
+        </div>
+        <div className={styles.informationSubContainer}>
+          <h4>LOCATION</h4>
+          {ipInfo && (
+            <h2>
+              {ipInfo?.location.city}, {ipInfo?.location.region}
+            </h2>
+          )}
+        </div>
+        <div className={styles.informationSubContainer}>
+          <h4>TIMEZONE</h4>
+          {ipInfo && <h2>UTC{ipInfo?.location.timezone}</h2>}
+        </div>
+        <div className={styles.informationSubContainer}>
+          <h4>ISP</h4>
+          <h2>{ipInfo?.isp}</h2>
+        </div>
+      </div>
+    );
+  };
+
+  const renderMap = () => {
+    return (
+      <MapContainer
+        style={{
+          height: "600px",
+          width: "1440px",
+        }}
+        center={[37.920142, -122.319339]}
+        zoom={14}
+      >
+        <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+        {ipInfo && (
+          <Marker
+            position={[ipInfo.location.lat, ipInfo.location.lng]}
+            icon={customIcon}
+          >
+            <Popup>Here they are</Popup>
+          </Marker>
+        )}
+        <RecenterAutomatically />
+      </MapContainer>
+    );
+  };
+
   return (
-    <div className={styles.outer}>
-      {renderHeader()}
-      {/* <div className={styles.informationContainer}></div> */}
-    </div>
+    <>
+      {renderIpInfo()}
+      <div className={styles.outer}>
+        {renderHeader()}
+        {renderMap()}
+      </div>
+    </>
   );
 };
