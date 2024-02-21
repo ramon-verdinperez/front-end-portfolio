@@ -23,6 +23,10 @@ const NavBar = () => {
     {
       text: "Card Details",
       link: "/cardDetails"
+    },
+    {
+      text: "IP Address Tracker",
+      link: "/ipAddressTracker"
     }
   ];
 
