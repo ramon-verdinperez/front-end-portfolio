@@ -6,6 +6,7 @@ import { ResultsSummaryMain } from "./results-summary-component/results-summary-
 import { SocialFeedMain } from "./interactive-comments-section/socialFeed/socialFeedMain.base";
 import { CardDetailsForm } from "./card-details-form/card-details-main/card-details-form.base";
 import { IpAddressTracker } from "./ip-address-tracker/ipAddressTracker.base";
+import { AboutMe } from "./about-me/aboutMe.base";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
 
       <div className="App">
         <Routes>
+          <Route path="/" element={ <AboutMe />} />
           <Route path="/socialFeed" element={<SocialFeedMain />} />
           <Route path="/faqAccordion" element={<FaqAccordianMain />} />
           <Route
