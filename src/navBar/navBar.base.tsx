@@ -1,6 +1,5 @@
 import { NavLink } from "react-router-dom";
-import { Text } from "@fluentui/react";
-import "./navBar.css";
+import style from "./navBar.module.css";
 
 interface LinkType {
   text: string;
@@ -22,30 +21,36 @@ const NavBar = () => {
     },
     {
       text: "Card Details",
-      link: "/cardDetails"
+      link: "/cardDetails",
     },
     {
       text: "IP Address Tracker",
-      link: "/ipAddressTracker"
-    }
+      link: "/ipAddressTracker",
+    },
+    {
+      text: "Social Feed",
+      link: "/socialFeed",
+    },
   ];
 
   return (
-    <div className="navBarOuter">
-      <div className="navBarLinks">
-        {links.map((l: LinkType) => {
-          return (
-            <NavLink
-              className={({ isActive }) =>
-                isActive ? "activeLinkText linkText" : "linkText"
-              }
-              to={l.link}
-              key={l.text}
-            >
-              <Text variant="large">{l.text}</Text>
-            </NavLink>
-          );
-        })}
+    <div className={style.navBarOuter}>
+      <div className={style.navBarLinks}>
+          {links.map((l: LinkType) => {
+            return (
+                <NavLink
+                  className={({ isActive }) =>
+                    isActive
+                      ? `${style.activeLinkText} ${style.links}`
+                      : `${style.links}`
+                  }
+                  to={l.link}
+                  key={l.text}
+                >
+                  <h3 className={style.linkText}>{l.text}</h3>
+                </NavLink>
+            );
+          })}
       </div>
     </div>
   );

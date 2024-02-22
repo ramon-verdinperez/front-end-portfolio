@@ -10,16 +10,24 @@ import { IpAddressTracker } from "./ip-address-tracker/ipAddressTracker.base";
 function App() {
   return (
     <Router>
-      <div className="nav">
-        <NavBar />
-      </div>
+      <NavBar />
+
       <div className="App">
         <Routes>
-          <Route path="/" element={<SocialFeedMain />} />
+          <Route path="/socialFeed" element={<SocialFeedMain />} />
           <Route path="/faqAccordion" element={<FaqAccordianMain />} />
           <Route
             path="/resultSummary"
-            element={<ResultsSummaryMain scores={{ reactionScore: 80, memoryScore: 90, verbalScore: 61, visualScore: 72}} />}
+            element={
+              <ResultsSummaryMain
+                scores={{
+                  reactionScore: 80,
+                  memoryScore: 90,
+                  verbalScore: 61,
+                  visualScore: 72,
+                }}
+              />
+            }
           />
           <Route path="/cardDetails" element={<CardDetailsForm />} />
           <Route path="/ipAddressTracker" element={<IpAddressTracker />} />
