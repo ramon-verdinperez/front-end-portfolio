@@ -56,7 +56,7 @@ export const IpAddressTracker = () => {
     const map = useMap();
     useEffect(() => {
       if (ipInfo) {
-        map.setView([ipInfo?.location.lat, ipInfo?.location.lng], 15, {
+        map.setView([ipInfo?.location.lat, ipInfo?.location.lng], 11, {
           animate: true,
         });
       }
@@ -133,12 +133,10 @@ export const IpAddressTracker = () => {
   const renderMap = () => {
     return (
       <MapContainer
-        style={{
-          height: "600px",
-          width: "1440px",
-        }}
-        center={[37.920142, -122.319339]}
-        zoom={14}
+        className={styles.mapContainer}
+
+        center={[40, -100]}
+        zoom={4}
       >
         <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
         {ipInfo && (
