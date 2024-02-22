@@ -1,3 +1,21 @@
+@keyframes errorShake {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(5px);
+  }
+  50% {
+    transform: translateX(-5px);
+  }
+  75% {
+    transform: translateX(5px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
 .outer {
   width: 100%;
   display: flex;
@@ -24,7 +42,7 @@
   color: white;
 }
 
-form {
+.ipAddressForm {
   height: 100px;
   display: flex;
   flex-direction: column;
@@ -34,35 +52,20 @@ form {
 .inputSection {
   display: flex;
   flex-direction: row;
+  height: 50px;
 }
 
 .inputSectionError {
   animation: errorShake 0.25s;
 }
 
-@keyframes errorShake {
-  0% {
-    transform: translateX(0);
-  }
-  25% {
-    transform: translateX(5px);
-  }
-  50% {
-    transform: translateX(-5px);
-  }
-  75% {
-    transform: translateX(5px);
-  }
-  100% {
-    transform: translateX(0);
-  }
-}
-
 .ipInput {
-  height: 50px;
+  height: 100%;
   width: 500px;
   border-radius: 10px 0px 0px 10px;
   border: none;
+  box-sizing: border-box;
+  padding-left: 20px;
 }
 
 .ipInputError {
@@ -70,7 +73,7 @@ form {
 }
 
 .submitButton {
-  height: 50px;
+  height: 100%;
   width: 50px;
   border-radius: 0px 10px 10px 0px;
   background-color: hsl(0, 0%, 17%);
@@ -90,7 +93,8 @@ form {
 .informationContainer {
   position: absolute;
   top: 250px;
-  left: 450px;
+  left: calc(100vw/2);
+  transform: translate(-500px);
   z-index: 5000;
   background-color: white;
   border-radius: 20px;

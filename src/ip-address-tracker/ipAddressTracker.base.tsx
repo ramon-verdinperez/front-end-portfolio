@@ -70,7 +70,7 @@ export const IpAddressTracker = () => {
       <div className={styles.header}>
         <h2 className={styles.title}>IP Address Tracker</h2>
 
-        <form onSubmit={handleSubmit(() => ipLookup())}>
+        <form className={styles.ipAddressForm} onSubmit={handleSubmit(() => ipLookup())}>
           <div
             className={`${styles.inputSection} ${
               errors.ipAddress ? `${styles.inputSectionError}` : ""

@@ -119,7 +119,7 @@ label {
   width: 100%;
 }
 
-form > div input {
+.cardForm > div input {
   height: 40px;
   border: hsl(279, 6%, 55%) solid 1px;
   border-radius: 8px;
@@ -127,7 +127,7 @@ form > div input {
   box-sizing: border-box;
 }
 
-form h4 {
+.cardForm h4 {
   font-size: small;
   padding-bottom: 5px;
 }
