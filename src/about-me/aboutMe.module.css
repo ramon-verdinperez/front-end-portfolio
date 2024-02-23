@@ -1,16 +1,27 @@
 .outer {
-
+    height: 100vh;
+    margin-top: -60px /* accounts for header margin */
 }
 
 .welcomingContainer {
-    height: 750px;
+    height: 100%;
     width: 100%;
     background-repeat: no-repeat;
     background-size: cover;
     background-image: url(./assets/background-img.png);
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 20fr 1fr;
     align-content: center;
+}
+
+.welcomeOuterSub {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.arrowContainer {
+    display: flex;
+    justify-content: center;
 }
 
 .welcomeSubContainer {
@@ -30,4 +41,29 @@
     font-size: 48px;
     margin: 0;
     color: var(--accent-color);
+}
+
+.welcomeIntro {
+    width: 100%;
+}
+
+.welcomeIntro p {
+    color: var(--primary-color);
+    font-size: large;
+}
+
+.iconTray {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+    height: 60px;
+}
+
+.iconTray > a img {
+    height: 50px;
+}
+
+.iconTray > a img:hover {
+    height: 60px;
 }
