@@ -1,0 +1,33 @@
+.outer {
+
+}
+
+.welcomingContainer {
+    height: 750px;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url(./assets/background-img.png);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-content: center;
+}
+
+.welcomeSubContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.welcomeTitle {
+    font-size: 64px;
+    margin: 0;
+    color: var(--primary-color);
+}
+
+.welcomeSubTitle {
+    font-size: 48px;
+    margin: 0;
+    color: var(--accent-color);
+}
