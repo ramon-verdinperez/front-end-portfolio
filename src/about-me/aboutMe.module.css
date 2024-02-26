@@ -8,7 +8,7 @@
     width: 100%;
     background-repeat: no-repeat;
     background-size: cover;
-    background-image: url(./assets/background-img.png);
+    background-image: url(./assets/background-img.jpeg);
     display: grid;
     grid-template-rows: 20fr 1fr;
     align-content: center;
@@ -58,6 +58,12 @@
     align-items: center;
     gap: 20px;
     height: 60px;
+}
+
+.iconTray > a {
+    width: 60px;
+    display: flex;
+    justify-content: center;
 }
 
 .iconTray > a img {
