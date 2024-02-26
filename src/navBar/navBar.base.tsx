@@ -6,7 +6,6 @@ interface LinkType {
   link: string;
 }
 const NavBar = () => {
-
   const base = "/front-end-portfolio";
 
   const links: Array<LinkType> = [
@@ -39,21 +38,22 @@ const NavBar = () => {
   return (
     <div className={style.navBarOuter}>
       <div className={style.navBarLinks}>
-          {links.map((l: LinkType) => {
-            return (
-                <NavLink
-                  className={({ isActive }) =>
-                    isActive
-                      ? `${style.activeLinkText} ${style.links}`
-                      : `${style.links}`
-                  }
-                  to={l.link}
-                  key={l.text}
-                >
-                  <h3 className={style.linkText}>{l.text}</h3>
-                </NavLink>
-            );
-          })}
+        {links.map((l: LinkType) => {
+          return (
+            <NavLink
+              className={({ isActive }) =>
+                isActive
+                  ? `${style.activeLinkText} ${style.links}`
+                  : `${style.links}`
+              }
+              to={l.link}
+              key={l.text}
+              end
+            >
+              <h3 className={style.linkText}>{l.text}</h3>
+            </NavLink>
+          );
+        })}
       </div>
     </div>
   );
