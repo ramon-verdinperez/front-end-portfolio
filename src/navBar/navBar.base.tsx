@@ -6,30 +6,33 @@ interface LinkType {
   link: string;
 }
 const NavBar = () => {
+
+  const base = "/front-end-portfolio";
+
   const links: Array<LinkType> = [
     {
       text: "Home",
-      link: "/",
+      link: `${base}/`,
     },
     {
       text: "FAQ",
-      link: "/faqAccordion",
+      link: `${base}/faqAccordion`,
     },
     {
       text: "Result Summary",
-      link: "/resultSummary",
+      link: `${base}/resultSummary`,
     },
     {
       text: "Card Details",
-      link: "/cardDetails",
+      link: `${base}/cardDetails`,
     },
     {
       text: "IP Address Tracker",
-      link: "/ipAddressTracker",
+      link: `${base}/ipAddressTracker`,
     },
     {
       text: "Social Feed",
-      link: "/socialFeed",
+      link: `${base}/socialFeed`,
     },
   ];
 
