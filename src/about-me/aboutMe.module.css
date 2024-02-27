@@ -8,7 +8,7 @@
     width: 100%;
     background-repeat: no-repeat;
     background-size: cover;
-    background-image: url(./assets/background-img.jpeg);
+    background-image: linear-gradient(transparent, white 100%) , url(./assets/background-img.jpeg);
     display: grid;
     grid-template-rows: 20fr 1fr;
     align-content: center;
@@ -103,7 +103,7 @@
     height: auto;
     min-height: 100px;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     grid-template-rows: 1fr;
     gap: 40px;
 }
@@ -137,7 +137,7 @@
 }
 
 .progressOuter {
-    height: 10px;
+    height: 12px;
     width: 100%;
     background-color: var(--neutral-color);
     border-radius: 3px;

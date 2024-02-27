@@ -2,6 +2,7 @@ import sweCoding from "./assets/swe-coding.png";
 import githubIcon from "./assets/github-icon.png";
 import linkedInIcon from "./assets/linkedin.png";
 import resumeIcon from "./assets/resume-icon.png";
+import gmailIcon from "./assets/gmail.png";
 import jsIcon from "./assets/Technologies/javascript.png";
 import cssIcon from "./assets/Technologies/css.png";
 import azureIcon from "./assets/Technologies/azure.png";
@@ -18,6 +19,7 @@ import pythonIcon from "./assets/Technologies/python.png";
 import apiIcon from "./assets/Technologies/api.png";
 import pwIcon from "./assets/Technologies/playwright.png";
 import jestIcon from "./assets/Technologies/jest.png";
+import figmaIcon from "./assets/Technologies/figma.png";
 import styles from "./aboutMe.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
@@ -110,7 +112,11 @@ export const AboutMe = () => {
       text: "Python",
       link: pythonIcon,
       proficiency: 6,
-    },
+    },{
+      text: "Figma",
+      link: figmaIcon,
+      proficiency: 6
+    }
   ];
 
   return (
@@ -156,6 +162,9 @@ export const AboutMe = () => {
                     title="LinkedIn Account"
                   />
                 </a>
+                <a href="mailto: ramonverdin17@gmail.com" target="_blank" rel="noreferrer">
+                  <img src={gmailIcon} alt="Gmail Icon" title="Send email" />
+                </a>
                 <a
                   href={require("./assets/resume.pdf")}
                   download="Ramon_Verdin_Resume.pdf"
@@ -186,7 +195,7 @@ export const AboutMe = () => {
             I am Ramon Verdin a San Francisco Bay Area native with a Bacehelor's
             degree in Computer Science from the University of California, Santa
             Barbara. I am in the early stages of my career in the search for
-            employment. In my first professional positin as a software developer
+            employment. In my first professional position as a software developer
             with HCLTech, I learned a lot and was able to get a glimpse at how
             the professional world of a software developer. I learned many
             technologies and tools and was able to put them to the test. Despite
