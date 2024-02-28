@@ -6,6 +6,7 @@
   background-color: white;
   display: flex;
   flex-direction: row;
+  position: relative;
 }
 
 .leftImage {
@@ -31,7 +32,7 @@
 }
 
 .cardsContainer {
-  top: calc(max(calc(100vh / 2), 250px));
+  top: calc(max(calc(90vh / 2), 250px));
   left: 242px;
   width: 370px;
   height: 380px;

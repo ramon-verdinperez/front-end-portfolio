@@ -14,25 +14,29 @@ const NavBar = () => {
       link: `${base}/`,
     },
     {
-      text: "FAQ",
-      link: `${base}/faqAccordion`,
+      text: "Example Components",
+      link: `${base}/exampleComponents`
     },
-    {
-      text: "Result Summary",
-      link: `${base}/resultSummary`,
-    },
-    {
-      text: "Card Details",
-      link: `${base}/cardDetails`,
-    },
-    {
-      text: "IP Address Tracker",
-      link: `${base}/ipAddressTracker`,
-    },
-    {
-      text: "Social Feed",
-      link: `${base}/socialFeed`,
-    },
+    // {
+    //   text: "FAQ",
+    //   link: `${base}/faqAccordion`,
+    // },
+    // {
+    //   text: "Result Summary",
+    //   link: `${base}/resultSummary`,
+    // },
+    // {
+    //   text: "Card Details",
+    //   link: `${base}/cardDetails`,
+    // },
+    // {
+    //   text: "IP Address Tracker",
+    //   link: `${base}/ipAddressTracker`,
+    // },
+    // {
+    //   text: "Social Feed",
+    //   link: `${base}/socialFeed`,
+    // },
   ];
 
   return (

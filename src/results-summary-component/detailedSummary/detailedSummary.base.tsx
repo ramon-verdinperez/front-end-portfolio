@@ -51,6 +51,7 @@ export const DetailedSummary = (props: DetailedSummaryProps) => {
   const renderScoreSummary = (score: ScoreBar) => {
     return (
       <div
+        key={score.text}
         className={`${styles.scoreSummary}`}
         style={{ backgroundColor: `${score.color}, 10%)` }}
       >

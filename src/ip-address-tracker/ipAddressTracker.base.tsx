@@ -70,7 +70,10 @@ export const IpAddressTracker = () => {
       <div className={styles.header}>
         <h2 className={styles.title}>IP Address Tracker</h2>
 
-        <form className={styles.ipAddressForm} onSubmit={handleSubmit(() => ipLookup())}>
+        <form
+          className={styles.ipAddressForm}
+          onSubmit={handleSubmit(() => ipLookup())}
+        >
           <div
             className={`${styles.inputSection} ${
               errors.ipAddress ? `${styles.inputSectionError}` : ""
@@ -134,7 +137,6 @@ export const IpAddressTracker = () => {
     return (
       <MapContainer
         className={styles.mapContainer}
-
         center={[40, -100]}
         zoom={4}
       >
@@ -154,8 +156,8 @@ export const IpAddressTracker = () => {
 
   return (
     <>
-      {renderIpInfo()}
       <div className={styles.outer}>
+        {renderIpInfo()}
         {renderHeader()}
         {renderMap()}
       </div>

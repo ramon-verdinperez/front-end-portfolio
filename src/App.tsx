@@ -7,6 +7,7 @@ import { SocialFeedMain } from "./interactive-comments-section/socialFeed/social
 import { CardDetailsForm } from "./card-details-form/card-details-main/card-details-form.base";
 import { IpAddressTracker } from "./ip-address-tracker/ipAddressTracker.base";
 import { AboutMe } from "./about-me/aboutMe.base";
+import { ExampleComponents } from "./example-components-page/exampleComponents.base";
 
 function App() {
   
@@ -36,6 +37,7 @@ function App() {
           <Route path={`${base}/cardDetails`} element={<CardDetailsForm />} />
           <Route path={`${base}/ipAddressTracker`} element={<IpAddressTracker />} />
           <Route path={`${base}/socialFeed`} element={<SocialFeedMain />} />
+          <Route path={`${base}/exampleComponents`} element={<ExampleComponents />} />
         </Routes>
       </div>
     </Router>
