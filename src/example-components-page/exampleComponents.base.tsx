@@ -9,10 +9,10 @@ import styles from "./exampleComponents.module.css";
 
 export const ExampleComponents = () => {
   const [typedTextExample, setTypedTextExample] = useState("");
-  const [typeDelay, setTypeDelay] = useState<number>();
-  const [deleteDelay, setDeleteDelay] = useState<number>();
-  const [pauseOnWord, setPauseOnWord] = useState<number>();
-  const [pauseBetweenWord, setPauseBetweenWord] = useState<number>();
+  const [typeDelay, setTypeDelay] = useState<number>(30);
+  const [deleteDelay, setDeleteDelay] = useState<number>(40);
+  const [pauseOnWord, setPauseOnWord] = useState<number>(500);
+  const [pauseBetweenWord, setPauseBetweenWord] = useState<number>(1000);
 
   return (
     <div className={styles.outer}>
@@ -33,13 +33,14 @@ export const ExampleComponents = () => {
         </div>
         <div className={styles.componentContainer}>
           <h1>Typed Text</h1>
-          <form className={styles.typedTextForm}>
+          <form className={styles.typedTextForm} name="Typed Text Controls">
             <div>
               <label>Text to type out: </label>
               <input
                 type="text"
                 value={typedTextExample}
                 onChange={(e) => setTypedTextExample(e.currentTarget.value)}
+                id="typedText"
               ></input>
             </div>
             <div>
@@ -52,6 +53,7 @@ export const ExampleComponents = () => {
                 onChange={(e) =>
                   setTypeDelay(e.currentTarget.value as unknown as number)
                 }
+                id="typeDelay"
               ></input>
             </div>
             <div>
@@ -64,6 +66,7 @@ export const ExampleComponents = () => {
                 onChange={(e) =>
                   setDeleteDelay(e.currentTarget.value as unknown as number)
                 }
+                id="deleteDelay"
               ></input>
             </div>
             <div>
@@ -76,6 +79,7 @@ export const ExampleComponents = () => {
                 onChange={(e) =>
                   setPauseOnWord(e.currentTarget.value as unknown as number)
                 }
+                id="pauseOnWord"
               ></input>
             </div>
             <div>
@@ -90,6 +94,7 @@ export const ExampleComponents = () => {
                     e.currentTarget.value as unknown as number
                   )
                 }
+                id="pauseBetweenWord"
               ></input>
             </div>
           </form>
