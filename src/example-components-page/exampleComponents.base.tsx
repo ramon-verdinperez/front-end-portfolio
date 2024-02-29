@@ -28,7 +28,7 @@ export const ExampleComponents = () => {
             challenges page. Some are very simple and only require simple HTML
             and CSS, while others get a little more advanced and require more
             HTML, CSS, JS, as well API use. As mentioned, these are only a few
-            examples of work I can do and would be more than
+            examples of work I can do, however I am capable of this and more.
           </p>
         </div>
         <div className={styles.componentContainer}>

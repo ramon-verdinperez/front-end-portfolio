@@ -24,6 +24,7 @@ import styles from "./aboutMe.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import { TypeWriterText } from "../type-writer/typeWriter.base";
+import { useForm } from "react-hook-form";
 
 interface Technologies {
   text: string;
@@ -112,12 +113,65 @@ export const AboutMe = () => {
       text: "Python",
       link: pythonIcon,
       proficiency: 6,
-    },{
+    }, {
       text: "Figma",
       link: figmaIcon,
       proficiency: 6
     }
   ];
+
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm({
+    defaultValues: {
+      firstName: "",
+      lastName: "",
+      email: "",
+      message: ""
+    },
+    delayError: 0,
+    mode: "onSubmit",
+  });
+
+  const renderForm = () => {
+    return (
+      <div className={styles.contactFormContainer}>
+        <form onSubmit={handleSubmit((data) => { console.log(data); reset() })}>
+          <div className={styles.formNames}>
+            <label>First Name</label>
+            <label>Last Name</label>
+
+            <div style={{ display: 'flex', flexDirection: 'column' }}>
+              <input type="text" id="First Name" placeholder="First Name" {...register("firstName", { required: "Required" })} />
+              {errors.firstName && <p className={styles.errorMessage}>{errors.firstName?.message}</p>}
+            </div>
+            <div style={{ display: 'flex', flexDirection: 'column' }}>
+              <input type="text" id="Last Name" placeholder="Last Name" {...register("lastName", { required: "Required" })} />
+              {errors.lastName && <p className={styles.errorMessage}>{errors.lastName?.message}</p>}
+            </div>
+          </div>
+
+          <div className={styles.formEntries}>
+            <label>Email</label>
+            <div style={{ display: 'flex', flexDirection: 'column' }}>
+              <input type="text" id="Email" placeholder="Email" {...register("email", { required: "Required", pattern: { value: /^[a-zA-Z0-9]+@(?:[a-zA-Z0-9]+\.)+[A-Za-z]+$/, message: "Please add a valid email" } })} />
+              {errors.email?.message && <p className={styles.errorMessage}>{errors.email?.message}</p>}
+            </div>
+          </div>
+          <div className={styles.formMessage}>
+            <label>Message</label>
+            <div style={{ display: 'flex', flexDirection: 'column' }}>
+              <textarea rows={5} id="message" {...register("message", { required: "Required" })}></textarea>
+              {errors.message && <p className={styles.errorMessage}>{errors.message.message}</p>}
+            </div>
+          </div>
+          <input type="submit" value="Submit" className={styles.submitButton}/>
+        </form>
+      </div>)
+  }
 
   return (
     <div className={styles.outer}>
@@ -240,6 +294,7 @@ export const AboutMe = () => {
           </div>
         </div>
       </div>
+      {/* {renderForm()} */}
     </div>
   );
 };

@@ -6,6 +6,11 @@ interface LinkType {
   link: string;
 }
 const NavBar = () => {
+
+  const scrollToTop = () => {
+    window.scrollTo(0, 0)
+  }
+
   const base = "/front-end-portfolio";
 
   const links: Array<LinkType> = [
@@ -45,6 +50,7 @@ const NavBar = () => {
         {links.map((l: LinkType) => {
           return (
             <NavLink
+              onClick={scrollToTop}
               className={({ isActive }) =>
                 isActive
                   ? `${style.activeLinkText} ${style.links}`
