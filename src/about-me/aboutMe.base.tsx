@@ -25,7 +25,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import { TypeWriterText } from "../type-writer/typeWriter.base";
 import { useForm } from "react-hook-form";
-import emailjs from '@emailjs/browser';
+import emailjs from "@emailjs/browser";
+import { useRef } from "react";
 
 interface Technologies {
   text: string;
@@ -34,6 +35,8 @@ interface Technologies {
 }
 
 export const AboutMe = () => {
+  const formRef = useRef<HTMLFormElement>(null);
+
   const tech: Technologies[] = [
     {
       text: "Javascript",
@@ -114,85 +117,129 @@ export const AboutMe = () => {
       text: "Python",
       link: pythonIcon,
       proficiency: 6,
-    }, {
+    },
+    {
       text: "Figma",
       link: figmaIcon,
-      proficiency: 6
-    }
+      proficiency: 6,
+    },
   ];
 
   const {
     register,
     handleSubmit,
     reset,
-    getValues,
     formState: { errors },
   } = useForm({
     defaultValues: {
       firstName: "",
       lastName: "",
       email: "",
-      message: ""
+      message: "",
     },
     delayError: 0,
     mode: "onSubmit",
   });
 
   const sendEmail = (data: any) => {
-    data.preventDefault()
-
     emailjs
-      .sendForm(process.env.REACT_APP_EMAILJS_SERVICE_ID!, process.env.REACT_APP_EMAILJS_TEMPLATE_ID!, data.target, {
-        publicKey: process.env.REACT_APP_EMAILJS_KEY!,
-      })
+      .sendForm(
+        process.env.REACT_APP_EMAILJS_SERVICE_ID!,
+        process.env.REACT_APP_EMAILJS_TEMPLATE_ID!,
+        formRef.current!,
+        {
+          publicKey: process.env.REACT_APP_EMAILJS_KEY!,
+        }
+      )
       .then(
         () => {
-          console.log('SUCCESS!');
-      reset();
-
+          reset();
+          alert("Message sent succesfully!");
         },
         (error) => {
-          console.log('FAILED...', error.text);
-        },
+          alert("Message failed to send please try again later!");
+          console.log("FAILED...", error.text);
+        }
       );
   };
 
   const renderForm = () => {
     return (
       <div className={styles.contactFormContainer}>
-        <form onSubmit={sendEmail}>
+        <form
+          ref={formRef}
+          onSubmit={handleSubmit(sendEmail)}
+        >
           <div className={styles.formNames}>
             <label>First Name</label>
             <label>Last Name</label>
 
-            <div style={{ display: 'flex', flexDirection: 'column' }}>
-              <input type="text" id="First Name" placeholder="First Name" {...register("firstName", { required: "Required" })} />
-              {errors.firstName && <p className={styles.errorMessage}>{errors.firstName?.message}</p>}
+            <div style={{ display: "flex", flexDirection: "column" }}>
+              <input
+                type="text"
+                id="First Name"
+                placeholder="First Name"
+                {...register("firstName", { required: "Required" })}
+              />
+              {errors.firstName && (
+                <p className={styles.errorMessage}>
+                  {errors.firstName?.message}
+                </p>
+              )}
             </div>
-            <div style={{ display: 'flex', flexDirection: 'column' }}>
-              <input type="text" id="Last Name" placeholder="Last Name" {...register("lastName", { required: "Required" })} />
-              {errors.lastName && <p className={styles.errorMessage}>{errors.lastName?.message}</p>}
+            <div style={{ display: "flex", flexDirection: "column" }}>
+              <input
+                type="text"
+                id="Last Name"
+                placeholder="Last Name"
+                {...register("lastName", { required: "Required" })}
+              />
+              {errors.lastName && (
+                <p className={styles.errorMessage}>
+                  {errors.lastName?.message}
+                </p>
+              )}
             </div>
           </div>
 
           <div className={styles.formEntries}>
             <label>Email</label>
-            <div style={{ display: 'flex', flexDirection: 'column' }}>
-              <input type="text" id="Email" placeholder="Email" {...register("email", { required: "Required", pattern: { value: /^[a-zA-Z0-9]+@(?:[a-zA-Z0-9]+\.)+[A-Za-z]+$/, message: "Please add a valid email" } })} />
-              {errors.email?.message && <p className={styles.errorMessage}>{errors.email?.message}</p>}
+            <div style={{ display: "flex", flexDirection: "column" }}>
+              <input
+                type="text"
+                id="Email"
+                placeholder="Email"
+                {...register("email", {
+                  required: "Required",
+                  pattern: {
+                    value: /^[a-zA-Z0-9]+@(?:[a-zA-Z0-9]+\.)+[A-Za-z]+$/,
+                    message: "Please add a valid email",
+                  },
+                })}
+              />
+              {errors.email?.message && (
+                <p className={styles.errorMessage}>{errors.email?.message}</p>
+              )}
             </div>
           </div>
           <div className={styles.formMessage}>
             <label>Message</label>
-            <div style={{ display: 'flex', flexDirection: 'column' }}>
-              <textarea rows={5} id="message" {...register("message", { required: "Required" })}></textarea>
-              {errors.message && <p className={styles.errorMessage}>{errors.message.message}</p>}
+            <div style={{ display: "flex", flexDirection: "column" }}>
+              <textarea
+                rows={5}
+                id="message"
+                {...register("message", { required: "Required" })}
+              ></textarea>
+              {errors.message && (
+                <p className={styles.errorMessage}>{errors.message.message}</p>
+              )}
             </div>
           </div>
           <input type="submit" value="Submit" className={styles.submitButton} />
         </form>
-      </div>)
-  }
+      </div>
+    );
+  };
 
   return (
     <div className={styles.outer}>
@@ -237,7 +284,11 @@ export const AboutMe = () => {
                     title="LinkedIn Account"
                   />
                 </a>
-                <a href="mailto: ramonverdin17@gmail.com" target="_blank" rel="noreferrer">
+                <a
+                  href="mailto: ramonverdin17@gmail.com"
+                  target="_blank"
+                  rel="noreferrer"
+                >
                   <img src={gmailIcon} alt="Gmail Icon" title="Send email" />
                 </a>
                 <a
@@ -270,12 +321,13 @@ export const AboutMe = () => {
             I am Ramon Verdin a San Francisco Bay Area native with a Bacehelor's
             degree in Computer Science from the University of California, Santa
             Barbara. I am in the early stages of my career in the search for
-            employment. In my first professional position as a software developer
-            with HCLTech, I learned a lot and was able to get a glimpse at how
-            the professional world of a software developer. I learned many
-            technologies and tools and was able to put them to the test. Despite
-            my lack of professional experience, my determination and ability to
-            quickly learn has helped me and will help me in succeeding.
+            employment. In my first professional position as a software
+            developer with HCLTech, I learned a lot and was able to get a
+            glimpse at how the professional world of a software developer. I
+            learned many technologies and tools and was able to put them to the
+            test. Despite my lack of professional experience, my determination
+            and ability to quickly learn has helped me and will help me in
+            succeeding.
             <br />
             <br />
           </p>
