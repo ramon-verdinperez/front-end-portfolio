@@ -25,6 +25,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import { TypeWriterText } from "../type-writer/typeWriter.base";
 import { useForm } from "react-hook-form";
+import emailjs from '@emailjs/browser';
 
 interface Technologies {
   text: string;
@@ -124,6 +125,7 @@ export const AboutMe = () => {
     register,
     handleSubmit,
     reset,
+    getValues,
     formState: { errors },
   } = useForm({
     defaultValues: {
@@ -136,10 +138,29 @@ export const AboutMe = () => {
     mode: "onSubmit",
   });
 
+  const sendEmail = (data: any) => {
+    data.preventDefault()
+
+    emailjs
+      .sendForm(process.env.REACT_APP_EMAILJS_SERVICE_ID!, process.env.REACT_APP_EMAILJS_TEMPLATE_ID!, data.target, {
+        publicKey: process.env.REACT_APP_EMAILJS_KEY!,
+      })
+      .then(
+        () => {
+          console.log('SUCCESS!');
+      reset();
+
+        },
+        (error) => {
+          console.log('FAILED...', error.text);
+        },
+      );
+  };
+
   const renderForm = () => {
     return (
       <div className={styles.contactFormContainer}>
-        <form onSubmit={handleSubmit((data) => { console.log(data); reset() })}>
+        <form onSubmit={sendEmail}>
           <div className={styles.formNames}>
             <label>First Name</label>
             <label>Last Name</label>
@@ -168,7 +189,7 @@ export const AboutMe = () => {
               {errors.message && <p className={styles.errorMessage}>{errors.message.message}</p>}
             </div>
           </div>
-          <input type="submit" value="Submit" className={styles.submitButton}/>
+          <input type="submit" value="Submit" className={styles.submitButton} />
         </form>
       </div>)
   }
@@ -294,7 +315,7 @@ export const AboutMe = () => {
           </div>
         </div>
       </div>
-      {/* {renderForm()} */}
+      {renderForm()}
     </div>
   );
 };
