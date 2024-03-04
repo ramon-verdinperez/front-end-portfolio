@@ -17,6 +17,7 @@
 }
 
 .outer {
+  position: relative;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -92,8 +93,8 @@
 
 .informationContainer {
   position: absolute;
-  top: 250px;
-  left: calc(100vw/2);
+  top: 200px;
+  left: 50%;
   transform: translate(-500px);
   z-index: 5000;
   background-color: white;

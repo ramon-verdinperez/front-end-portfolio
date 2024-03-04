@@ -59,18 +59,21 @@ export const CardDetailsForm = () => {
     return (
       <>
         <form
+          name="Card Details"
           className={styles.cardForm}
           onSubmit={handleSubmit(() => setSubmitSuccess(true) )}
         >
           <div className={styles.genericInput}>
             <h4>CARDHOLDER NAME</h4>
             <input
+              id="name"
               type="text"
               placeholder="e.g. Jane Appleseed"
               {...register("name", {
                 required: "Please enter the card holder name!",
               })}
               className={errors.name?.message ? styles.inputError : undefined}
+              autoComplete="given-name"
             />
             {errors.name?.message && (
               <div>
@@ -82,6 +85,7 @@ export const CardDetailsForm = () => {
           <div className={styles.genericInput}>
             <h4>CARD NUMBER</h4>
             <input
+              id="number"
               type="text"
               placeholder="e.g. 1234 5678 9123 0000"
               {...register("cardNumber", {
@@ -112,6 +116,7 @@ export const CardDetailsForm = () => {
                 style={{ display: "flex", flexDirection: "row", gap: "5px" }}
               >
                 <input
+                  id="expMonth"
                   type="text"
                   placeholder="MM"
                   {...register("expMonth", {
@@ -127,6 +132,7 @@ export const CardDetailsForm = () => {
                   }
                 />
                 <input
+                  id="expYear"
                   type="text"
                   placeholder="YY"
                   {...register("expYear", {
@@ -177,6 +183,7 @@ export const CardDetailsForm = () => {
             </div>
           </div>
           <input
+            id="submit"
             type="submit"
             className={styles.confirmButton}
             value="Confirm"
@@ -194,6 +201,7 @@ export const CardDetailsForm = () => {
         <h1>THANK YOU!</h1>
         <h4>We've added your card details</h4>
         <input
+          id="continue"
           style={{ marginTop: "40px" }}
           onClick={() => {
             reset();

@@ -1,10 +1,13 @@
 {
-  "homepage": "https://ramon-verdinperez.github.io/",
+  "homepage": "https://ramon-verdinperez.github.io/front-end-portfolio",
   "name": "front-end-portfolio",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@emailjs/browser": "^4.1.0",
     "@fluentui/react": "^8.113.1",
+    "@fortawesome/free-solid-svg-icons": "^6.5.1",
+    "@fortawesome/react-fontawesome": "^0.2.0",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",

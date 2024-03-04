@@ -1,6 +1,7 @@
 .outerContainer {
     height: 390px;
-    width: 540px;
+    display: flex;
+    justify-content: center;
 }
 
 .summaryContainer {
@@ -12,7 +13,7 @@
     overflow: hidden;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    box-shadow: 0px 0px 25px grey;
+    box-shadow: 0px 0px 25px black;
 }
 
 .summaryContainer:hover {

@@ -25,12 +25,13 @@ export const IpAddressTracker = () => {
     register,
     handleSubmit,
     getValues,
+    setError,
     formState: { errors },
   } = useForm({
     defaultValues: {
       ipAddress: "",
     },
-    mode: "onBlur",
+    mode: "onSubmit",
   });
 
   const [ipInfo, setIpInfo] = useState<IPAddressInfo>();
@@ -41,124 +42,135 @@ export const IpAddressTracker = () => {
   });
 
   const ipLookup = async () => {
-    await fetch(
-      `https://geo.ipify.org/api/v2/country,city?apiKey=${
-        process.env.REACT_APP_IP_LOOKUP_KEY
-      }&ipAddress=${getValues("ipAddress")}`
-    )
-      .then((r) => r.json())
-      .then((d: IPAddressInfo) => {
-        setIpInfo(d);
-      });
+
+    try {
+      const response = await fetch(
+        `https://geo.ipify.org/api/v2/country,city?apiKey=${process.env.REACT_APP_IP_LOOKUP_KEY
+        }&ipAddress=${getValues("ipAddress")}`
+      );
+
+      if (!response.ok) {
+        setError("ipAddress", {message: "Invalid IP Address"});
+        throw new Error("Invalid IP Address");
+      };
+
+      const rJson: IPAddressInfo = await response.json();
+
+      setIpInfo(rJson);
+    } catch (e) {
+      console.log((e as unknown as Error).message)
+    }
   };
 
-  const RecenterAutomatically = () => {
-    const map = useMap();
-    useEffect(() => {
-      if (ipInfo) {
-        map.setView([ipInfo?.location.lat, ipInfo?.location.lng], 11, {
-          animate: true,
-        });
-      }
-    }, [ipInfo]);
+    const RecenterAutomatically = () => {
+      const map = useMap();
+      useEffect(() => {
+        if (ipInfo) {
+          map.setView([ipInfo?.location.lat, ipInfo?.location.lng], 11, {
+            animate: true,
+          });
+        }
+      }, [ipInfo]);
 
-    return null;
-  };
+      return null;
+    };
 
-  const renderHeader = () => {
-    return (
-      <div className={styles.header}>
-        <h2 className={styles.title}>IP Address Tracker</h2>
+    const renderHeader = () => {
+      return (
+        <div className={styles.header}>
+          <h2 className={styles.title}>IP Address Tracker</h2>
 
-        <form className={styles.ipAddressForm} onSubmit={handleSubmit(() => ipLookup())}>
-          <div
-            className={`${styles.inputSection} ${
-              errors.ipAddress ? `${styles.inputSectionError}` : ""
-            }`}
+          <form
+            name="IP Address input"
+            className={styles.ipAddressForm}
+            onSubmit={handleSubmit(() => ipLookup())}
           >
-            <input
-              className={`${styles.ipInput} ${
-                errors.ipAddress ? `${styles.ipInputError}` : ""
-              }`}
-              {...register("ipAddress", {
-                required: "Please enter an IP Address",
-                pattern: {
-                  value: /^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}$/,
-                  message: "Please enter a valid IP Address",
-                },
-              })}
-              placeholder="e.g. 192.0.0.100"
-              maxLength={15}
-            />
             <div
-              className={styles.submitButton}
-              onClick={handleSubmit(() => ipLookup())}
+              className={`${styles.inputSection} ${errors.ipAddress ? `${styles.inputSectionError}` : ""
+                }`}
             >
-              <img src={iconArrow} alt="submit arrow" />
+              <input
+                id="ipInput"
+                className={`${styles.ipInput} ${errors.ipAddress ? `${styles.ipInputError}` : ""
+                  }`}
+                {...register("ipAddress", {
+                  required: "Please enter an IP Address",
+                  pattern: {
+                    value: /^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}$/,
+                    message: "Please enter a valid IP Address",
+                  },
+                })}
+                placeholder="e.g. 192.0.0.100"
+                maxLength={15}
+              />
+              <div
+                className={styles.submitButton}
+                onClick={handleSubmit(() => ipLookup())}
+              >
+                <img src={iconArrow} alt="submit arrow" />
+              </div>
             </div>
+            <p className={styles.errorMessage}>{errors.ipAddress?.message}</p>
+          </form>
+        </div>
+      );
+    };
+
+    const renderIpInfo = () => {
+      return (
+        <div className={styles.informationContainer}>
+          <div className={styles.informationSubContainer}>
+            <h4>IP ADDRESS</h4>
+            <h2>{ipInfo?.ip}</h2>
           </div>
-          <p className={styles.errorMessage}>{errors.ipAddress?.message}</p>
-        </form>
-      </div>
-    );
-  };
-
-  const renderIpInfo = () => {
-    return (
-      <div className={styles.informationContainer}>
-        <div className={styles.informationSubContainer}>
-          <h4>IP ADDRESS</h4>
-          <h2>{ipInfo?.ip}</h2>
+          <div className={styles.informationSubContainer}>
+            <h4>LOCATION</h4>
+            {ipInfo && (
+              <h2>
+                {ipInfo?.location.city}, {ipInfo?.location.region}
+              </h2>
+            )}
+          </div>
+          <div className={styles.informationSubContainer}>
+            <h4>TIMEZONE</h4>
+            {ipInfo && <h2>UTC{ipInfo?.location.timezone}</h2>}
+          </div>
+          <div className={styles.informationSubContainer}>
+            <h4>ISP</h4>
+            <h2>{ipInfo?.isp}</h2>
+          </div>
         </div>
-        <div className={styles.informationSubContainer}>
-          <h4>LOCATION</h4>
+      );
+    };
+
+    const renderMap = () => {
+      return (
+        <MapContainer
+          className={styles.mapContainer}
+          center={[40, -100]}
+          zoom={4}
+        >
+          <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
           {ipInfo && (
-            <h2>
-              {ipInfo?.location.city}, {ipInfo?.location.region}
-            </h2>
+            <Marker
+              position={[ipInfo.location.lat, ipInfo.location.lng]}
+              icon={customIcon}
+            >
+              <Popup>Here they are</Popup>
+            </Marker>
           )}
-        </div>
-        <div className={styles.informationSubContainer}>
-          <h4>TIMEZONE</h4>
-          {ipInfo && <h2>UTC{ipInfo?.location.timezone}</h2>}
-        </div>
-        <div className={styles.informationSubContainer}>
-          <h4>ISP</h4>
-          <h2>{ipInfo?.isp}</h2>
-        </div>
-      </div>
-    );
-  };
+          <RecenterAutomatically />
+        </MapContainer>
+      );
+    };
 
-  const renderMap = () => {
     return (
-      <MapContainer
-        className={styles.mapContainer}
-
-        center={[40, -100]}
-        zoom={4}
-      >
-        <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-        {ipInfo && (
-          <Marker
-            position={[ipInfo.location.lat, ipInfo.location.lng]}
-            icon={customIcon}
-          >
-            <Popup>Here they are</Popup>
-          </Marker>
-        )}
-        <RecenterAutomatically />
-      </MapContainer>
+      <>
+        <div className={styles.outer}>
+          {renderIpInfo()}
+          {renderHeader()}
+          {renderMap()}
+        </div>
+      </>
     );
   };
-
-  return (
-    <>
-      {renderIpInfo()}
-      <div className={styles.outer}>
-        {renderHeader()}
-        {renderMap()}
-      </div>
-    </>
-  );
-};

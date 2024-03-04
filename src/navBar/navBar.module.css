@@ -5,6 +5,7 @@
     position: fixed;
     top: 0;
     box-shadow: -5px 5px 30px rgba(0, 0, 0, 0.6);
+    z-index: 50000000;
 }
 
 .navBarLinks {

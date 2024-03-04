@@ -6,18 +6,23 @@ import { ResultsSummaryMain } from "./results-summary-component/results-summary-
 import { SocialFeedMain } from "./interactive-comments-section/socialFeed/socialFeedMain.base";
 import { CardDetailsForm } from "./card-details-form/card-details-main/card-details-form.base";
 import { IpAddressTracker } from "./ip-address-tracker/ipAddressTracker.base";
+import { AboutMe } from "./about-me/aboutMe.base";
+import { ExampleComponents } from "./example-components-page/exampleComponents.base";
 
 function App() {
+  
+  const base = "/front-end-portfolio";
+
   return (
     <Router>
       <NavBar />
 
       <div className="App">
         <Routes>
-          <Route path="/socialFeed" element={<SocialFeedMain />} />
-          <Route path="/faqAccordion" element={<FaqAccordianMain />} />
+          <Route path={`${base}/`} element={<AboutMe />} />
+          <Route path={`${base}/faqAccordion`} element={<FaqAccordianMain />} />
           <Route
-            path="/resultSummary"
+            path={`${base}/resultSummary`}
             element={
               <ResultsSummaryMain
                 scores={{
@@ -29,8 +34,10 @@ function App() {
               />
             }
           />
-          <Route path="/cardDetails" element={<CardDetailsForm />} />
-          <Route path="/ipAddressTracker" element={<IpAddressTracker />} />
+          <Route path={`${base}/cardDetails`} element={<CardDetailsForm />} />
+          <Route path={`${base}/ipAddressTracker`} element={<IpAddressTracker />} />
+          <Route path={`${base}/socialFeed`} element={<SocialFeedMain />} />
+          <Route path={`${base}/exampleComponents`} element={<ExampleComponents />} />
         </Routes>
       </div>
     </Router>
