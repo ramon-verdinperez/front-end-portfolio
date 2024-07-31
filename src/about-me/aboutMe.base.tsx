@@ -20,6 +20,7 @@ import apiIcon from "./assets/Technologies/api.png";
 import pwIcon from "./assets/Technologies/playwright.png";
 import jestIcon from "./assets/Technologies/jest.png";
 import figmaIcon from "./assets/Technologies/figma.png";
+import netPlus from "./assets/Certifications/networkPlus.png"
 import styles from "./aboutMe.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
@@ -32,6 +33,11 @@ interface Technologies {
   text: string;
   link: string;
   proficiency: number;
+}
+
+interface Certifications {
+  text: string;
+  link: string;
 }
 
 export const AboutMe = () => {
@@ -124,6 +130,13 @@ export const AboutMe = () => {
       proficiency: 6,
     },
   ];
+
+  const certs: Certifications[] = [
+    {
+      text: "Network+",
+      link: netPlus
+    }
+  ]
 
   const {
     register,
@@ -361,6 +374,20 @@ export const AboutMe = () => {
                       style={{ width: `${t.proficiency}0%` }}
                     ></div>
                   </div>
+                </div>
+              );
+            })}
+          </div>
+          <br />
+          <br />
+
+          <h1 className={styles.aboutMeTitle}>Certifications</h1>
+          <div className={styles.technologiesOuterContainer}>
+            {certs.map((c: Certifications) => {
+              return (
+                <div className={styles.techContainer} key={c.text}>
+                  <img src={c.link} alt={c.text} />
+                  <p>{c.text}</p>
                 </div>
               );
             })}
