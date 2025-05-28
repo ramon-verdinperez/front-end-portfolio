@@ -1,11 +1,11 @@
 {
   "files": {
-    "main.css": "/front-end-portfolio/static/css/main.51e627c7.css",
-    "main.js": "/front-end-portfolio/static/js/main.291bf39c.js",
+    "main.css": "/front-end-portfolio/static/css/main.869c7443.css",
+    "main.js": "/front-end-portfolio/static/js/main.980ef2c9.js",
     "static/media/swe-coding.png": "/front-end-portfolio/static/media/swe-coding.96f37149725b73e3b376.png",
     "static/media/pattern-bg-desktop.png": "/front-end-portfolio/static/media/pattern-bg-desktop.5013c4f570ecf757f855.png",
+    "static/media/resume.pdf": "/front-end-portfolio/static/media/resume.6e81405d51ac19be49bc.pdf",
     "static/media/postman.png": "/front-end-portfolio/static/media/postman.91690925a2050c5fa76c.png",
-    "static/media/resume.pdf": "/front-end-portfolio/static/media/resume.12456c78130bb40a1e88.pdf",
     "static/media/github-icon.png": "/front-end-portfolio/static/media/github-icon.dea49d48a3e47344edfe.png",
     "static/media/bg-main-desktop.png": "/front-end-portfolio/static/media/bg-main-desktop.806e7aa7b4dbc1d78bc3.png",
     "static/media/bg-card-back.png": "/front-end-portfolio/static/media/bg-card-back.23f68fa3aa3d5b33dfc8.png",
@@ -38,11 +38,11 @@
     "static/media/icon-delete.svg": "/front-end-portfolio/static/media/icon-delete.86cedbf2e37529f9c8f1f744254059b0.svg",
     "static/media/icon-reaction.svg": "/front-end-portfolio/static/media/icon-reaction.0c1d6b98b4559ba72276d9ceda14692d.svg",
     "static/media/icon-arrow.svg": "/front-end-portfolio/static/media/icon-arrow.2eaaa5ee3602d5aa14a2dba69e9fb7a0.svg",
-    "main.51e627c7.css.map": "/front-end-portfolio/static/css/main.51e627c7.css.map",
-    "main.291bf39c.js.map": "/front-end-portfolio/static/js/main.291bf39c.js.map"
+    "main.869c7443.css.map": "/front-end-portfolio/static/css/main.869c7443.css.map",
+    "main.980ef2c9.js.map": "/front-end-portfolio/static/js/main.980ef2c9.js.map"
   },
   "entrypoints": [
-    "static/css/main.51e627c7.css",
-    "static/js/main.291bf39c.js"
+    "static/css/main.869c7443.css",
+    "static/js/main.980ef2c9.js"
   ]
 }
